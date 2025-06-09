@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Feedback Analyzer</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card dashboard-card">
+            <h1 id="studentWelcome">Welcome, Student!</h1>
+            <p>
+                Email: <strong id="studentEmailDisplay">Loading...</strong> |
+                Student ID: <strong id="studentIdDisplay">Loading...</strong>
+            </p>
+            <p>Submit feedback for your subjects and view your feedback history.</p>
+
+            <nav class="dashboard-nav">
+                <!-- Buttons with IDs for programmatic event listeners -->
+                <button class="btn btn-secondary" id="navGiveFeedback">Submit New Feedback</button>
+                <button class="btn btn-secondary" id="navMyFeedbackHistory">View My Feedback</button>
+                <button class="btn btn-danger" id="logoutButtonStudent">Logout</button>
+            </nav>
+
+            <div class="dashboard-content">
+                <!-- Give Feedback Section -->
+                <div id="giveFeedbackSection" class="content-section active">
+                    <h2>Submit Feedback</h2>
+                    <form id="submitFeedbackForm">
+                        <div class="form-group">
+                            <label for="feedbackSubjectSelectStudent">Select Subject:</label>
+                            <select id="feedbackSubjectSelectStudent" required>
+                                <option value="">Loading subjects...</option>
+                            </select>
+                        </div>
+                        <!-- Updated fields for new ratings -->
+                        <div class="form-group">
+                            <label for="teachingRating">Teaching Rating (1-5):</label>
+                            <input type="number" id="teachingRating" min="1" max="5" placeholder="Enter rating (1-5)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="knowledgeRating">Knowledge Rating (1-5):</label>
+                            <input type="number" id="knowledgeRating" min="1" max="5" placeholder="Enter rating (1-5)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="behaviorRating">Behavior Rating (1-5):</label>
+                            <input type="number" id="behaviorRating" min="1" max="5" placeholder="Enter rating (1-5)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedbackComment">Comments (Optional):</label>
+                            <textarea id="feedbackComment" rows="4" placeholder="Enter your comments (max 500 characters)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                    </form>
+                    <div id="giveFeedbackMessage" class="message"></div>
+                </div>
+
+                <!-- My Feedback History Section -->
+                <div id="myFeedbackHistorySection" class="content-section hidden">
+                    <h2>My Feedback History</h2>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Section</th>
+                                    <th>Teaching</th>
+                                    <th>Knowledge</th>
+                                    <th>Behavior</th>
+                                    <th>Comment</th>
+                                    <th>Submitted At</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myFeedbackTableBody">
+                                <!-- Student's feedback history will be loaded here by JavaScript -->
+                                <tr><td colspan="7">Loading feedback history...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="myFeedbackHistoryMessage" class="message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/student.js"></script>
+</body>
+</html>

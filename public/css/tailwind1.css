@@ -1,0 +1,525 @@
+/* General Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    /* Darker, subtle background gradient */
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); /* Deep blue-gray gradient */
+    color: #e0e0e0; /* Lighter text for dark background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px; /* Slightly wider for a more spacious feel */
+    margin: 20px auto;
+    padding: 15px; /* Increased padding */
+}
+
+.card {
+    background-color: #3f51b5; /* A primary blue for cards (Material Design like) */
+    border-radius: 12px; /* Consistent rounding */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2); /* Deeper shadows for floating effect */
+    padding: 45px; /* More generous padding */
+    text-align: center;
+    margin-bottom: 35px; /* More space between cards */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInSlideUp 0.9s ease-out forwards; /* Slower, more dramatic entrance */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border for definition */
+}
+
+.card:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3); /* Even more pronounced shadow on hover */
+    transform: translateY(38px); /* Slight lift */
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h1 {
+    color: #e0e0e0; /* Lighter heading color */
+    font-size: 2.8em; /* Larger, more impactful heading */
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow */
+}
+
+.card h2 {
+    color: #bdbdbd; /* Slightly muted sub-heading */
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.card p {
+    color: #cccccc; /* Lighter paragraph text */
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* Form Grouping */
+.form-group {
+    margin-bottom: 30px; /* More space */
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 12px;
+    color: #ffffff; /* White labels for contrast */
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 16px; /* More padding */
+    border: 1px solid #5a7090; /* Darker, cooler border */
+    border-radius: 8px; /* Slightly less rounded for a sharper look */
+    box-sizing: border-box;
+    font-size: 1.1em;
+    font-family: 'Inter', sans-serif;
+    background-color: #4a6080; /* Darker input background */
+    color: #ffffff; /* White text in inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a0a0a0; /* Lighter placeholder text */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #64b5f6; /* Brighter blue on focus */
+    box-shadow: 0 0 0 5px rgba(100, 181, 246, 0.4); /* Pronounced focus ring */
+    background-color: #5b7191; /* Slightly lighter on focus */
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 35px; /* More padding for bigger buttons */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    margin: 10px; /* More spacing */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* Stronger shadow */
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.03em; /* More letter spacing */
+    text-transform: uppercase; /* Uppercase text for buttons */
+}
+
+.btn:active {
+    transform: translateY(2px); /* More noticeable press */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background-color: #7986cb; /* Slightly lighter blue-purple */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #5c6bc0; /* Darker blue-purple on hover */
+    transform: translateY(-4px); /* More pronounced lift */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+.btn-secondary {
+    background-color: #90a4ae; /* Grey-blue */
+    color: white;
+    border: 1px solid #a7b7c2;
+}
+
+.btn-secondary:hover {
+    background-color: #78909c; /* Darker grey-blue on hover */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    border-color: #8c9fa8;
+}
+
+.btn-danger {
+    background-color: #ef5350; /* Softer red */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #e53935; /* Darker red on hover */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+.btn-info {
+    background-color: #26a69a; /* Teal */
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #00897b; /* Darker teal on hover */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+
+/* Messages */
+.message {
+    padding: 18px;
+    border-radius: 8px; /* Slightly less rounded than cards */
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message.info {
+    background-color: rgba(66, 165, 245, 0.2); /* Light transparent blue */
+    color: #90CAF9; /* Info text */
+    border: 1px solid #42A5F5;
+}
+
+.message.success {
+    background-color: rgba(102, 187, 106, 0.2); /* Light transparent green */
+    color: #A5D6A7; /* Success text */
+    border: 1px solid #66BB6A;
+}
+
+.message.error {
+    background-color: rgba(239, 83, 80, 0.2); /* Light transparent red */
+    color: #EF9A9A; /* Error text */
+    border: 1px solid #EF5350;
+}
+
+/* Dashboard Specific Styles */
+.dashboard-card {
+    text-align: left;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px; /* More space */
+    margin: 40px 0;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+.dashboard-content .content-section {
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background-color: #394a82; /* Slightly darker background for content sections */
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.dashboard-content .content-section.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    box-shadow: none;
+    transition: opacity 0.6s ease-in, transform 0.6s ease-in, height 0.7s ease-in-out, padding 0.7s ease-in-out, margin 0.7s ease-in-out, border 0.7s ease-in-out, box-shadow 0.7s ease-in-out;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 30px;
+    background-color: #394a82; /* Consistent with content section background */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.data-table th,
+.data-table td {
+    padding: 18px 25px; /* More padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Very subtle border */
+    text-align: left;
+    color: #e0e0e0; /* Lighter text */
+}
+
+.data-table th {
+    background-color: #4a5c88; /* Slightly lighter header background */
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr {
+    transition: background-color 0.25s ease-in-out, transform 0.15s ease-out;
+}
+
+.data-table tbody tr:hover {
+    background-color: #42557e; /* Slightly lighter on hover */
+    transform: translateX(3px); /* More noticeable slide */
+    cursor: default;
+}
+
+.data-table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+.data-table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+.data-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+.data-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+.small-info {
+    font-size: 0.95em;
+    color: #a0a0a0; /* Lighter text */
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* New styles for feedback analysis */
+.feedback-analysis-results {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 35px;
+    margin-top: 35px;
+    background-color: #394a82; /* Consistent with content section */
+    box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+}
+
+.feedback-analysis-results h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+    font-size: 2.2em;
+}
+
+.feedback-analysis-results .analysis-total-entries {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #cccccc;
+}
+
+.analysis-card {
+    background-color: #4a5c88; /* Slightly lighter blue for analysis cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin-bottom: 35px;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+}
+
+.analysis-card:hover {
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Sentiment Bars */
+.sentiment-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.sentiment-bar {
+    flex: 1;
+    min-width: 160px; /* Larger min-width */
+    padding: 18px 15px; /* More padding */
+    border-radius: 10px;
+    font-weight: 700; /* Bolder text */
+    color: white;
+    text-align: center;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.sentiment-bar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Darker, vibrant Sentiment Colors */
+.sentiment-bar.positive {
+    background-color: #4CAF50; /* Strong Green */
+}
+.sentiment-bar.neutral {
+    background-color: #FFC107; /* Strong Amber */
+    color: #333; /* Dark text for contrast */
+}
+.sentiment-bar.negative {
+    background-color: #F44336; /* Strong Red */
+}
+
+/* Specific comment sentiment bars - slightly darker */
+.sentiment-bar.positive-comment { background-color: #388E3C; }
+.sentiment-bar.neutral-comment { background-color: #FFA000; color: #333;}
+.sentiment-bar.negative-comment { background-color: #D32F2F; }
+
+
+/* Average Ratings Grid */
+.avg-ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.avg-ratings-grid > div {
+    background-color: #4a5c88; /* Consistent with analysis card background */
+    padding: 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #e0e0e0;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.avg-ratings-grid > div:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.avg-rating-value {
+    font-size: 2.2em; /* Even larger value */
+    font-weight: 800;
+    color: #81C784; /* Soft green accent for value */
+    display: block;
+    margin-top: 10px;
+}
+
+/* Unsubmitted Students List */
+.unsubmitted-students-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.unsubmitted-students-list li {
+    background-color: #616161; /* Darker gray for unsubmitted */
+    border: 1px solid #757575;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    color: #ffe082; /* Light yellow text for contrast */
+    font-weight: 600;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.unsubmitted-students-list li:hover {
+    transform: translateX(10px); /* More pronounced slide */
+    background-color: #707070;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+.unsubmitted-students-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .card {
+        padding: 30px;
+        margin-bottom: 25px;
+    }
+    .card h1 {
+        font-size: 2.2em;
+    }
+    .card h2 {
+        font-size: 1.6em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .btn {
+        padding: 14px;
+        font-size: 1em;
+    }
+    .dashboard-nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .dashboard-content .content-section {
+        padding: 25px;
+    }
+    .sentiment-bars,
+    .avg-ratings-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .sentiment-bar,
+    .avg-ratings-grid > div {
+        width: 100%;
+        min-width: unset;
+    }
+}

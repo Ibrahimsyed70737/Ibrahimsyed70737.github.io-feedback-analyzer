@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Dashboard - Feedback Analyzer</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card dashboard-card">
+            <h1 id="principalWelcome">Welcome, Principal!</h1>
+            <p>Manage students, subjects, and view feedback.</p>
+
+            <!-- Main Dashboard Content - ALWAYS VISIBLE -->
+            <div id="dashboardContentWrapper">
+                <p>Currently managing feedback for section: <strong id="currentSectionDisplay"></strong></p>
+                <nav class="dashboard-nav">
+                    <!-- Nav buttons -->
+                    <button class="btn btn-secondary" id="navAddStudent">Add Student</button>
+                    <button class="btn btn-secondary" id="navAddSubject">Add Subject</button>
+                    <button class="btn btn-secondary" id="navViewStudents">View Students</</button>
+                    <button class="btn btn-secondary" id="navViewFeedback">View Feedback</button>
+                    <button class="btn btn-danger" id="logoutButton">Logout</button>
+                    <button class="btn btn-info" id="changeSectionButton">Change Section</button>
+                </nav>
+
+                <div class="dashboard-content">
+                    <!-- Add Student Section -->
+                    <div id="addStudentSection" class="content-section active">
+                        <h2>Add New Student</h2>
+                        <form id="addStudentForm">
+                            <div class="form-group">
+                                <label for="studentEmail">Student Email:</label>
+                                <input type="email" id="studentEmail" placeholder="Enter student email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentPassword">Default Password:</label>
+                                <input type="password" id="studentPassword" placeholder="Set a default password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentId">Student ID:</label>
+                                <input type="text" id="studentId" placeholder="Enter student ID (e.g., S001)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentSection">Section:</label>
+                                <input type="text" id="studentSection" readonly placeholder="Auto-filled from selected section">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Student</button>
+                        </form>
+                        <div id="addStudentMessage" class="message"></div>
+                    </div>
+
+                    <!-- Add Subject Section -->
+                    <div id="addSubjectSection" class="content-section hidden">
+                        <h2>Add New Subject</h2>
+                        <form id="addSubjectForm">
+                            <div class="form-group">
+                                <label for="subjectName">Subject Name:</label>
+                                <input type="text" id="subjectName" placeholder="Enter subject name (e.g., Math, Physics)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjectSection">Section:</label>
+                                <input type="text" id="subjectSection" readonly placeholder="Auto-filled from selected section">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Subject</button>
+                        </form>
+                        <div id="addSubjectMessage" class="message"></div>
+                    </div>
+
+                    <!-- View Students Section -->
+                    <div id="viewStudentsSection" class="content-section hidden">
+                        <h2>Registered Students in <span id="viewStudentsSectionDisplay"></span></h2>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Student ID</th>
+                                        <th>Section</th>
+                                        <th>Created At</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsTableBody">
+                                    <tr><td colspan="4">Loading students...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="viewStudentsMessage" class="message"></div>
+                    </div>
+
+                    <!-- View Feedback Section -->
+                    <div id="viewFeedbackSection" class="content-section hidden">
+                        <h2>View Subject Feedback for <span id="viewFeedbackSectionDisplay"></span></h2>
+                        <div class="form-group">
+                            <label for="feedbackSubjectSelect">Select Subject:</label>
+                            <select id="feedbackSubjectSelect">
+                                <option value="">Loading subjects...</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="loadFeedbackButton">Load Feedback</button>
+                        <div id="viewFeedbackMessage" class="message"></div>
+
+                        <div id="feedbackAnalysisResults" class="feedback-analysis-results hidden">
+                            <h3>Feedback Analysis for <span id="analysisSubjectName"></span></h3>
+                            <p class="analysis-total-entries">Total Feedback Entries: <span id="totalFeedbackEntries">0</span></p>
+
+                            <!-- Overall Sentiment Overview (from Ratings) -->
+                            <div class="analysis-card">
+                                <h4>Overall Sentiment Overview (from Ratings)</h4>
+                                <div class="sentiment-bars">
+                                    <div class="sentiment-bar positive">Positive: <span id="sentimentPositive">0</span></div>
+                                    <div class="sentiment-bar neutral">Neutral: <span id="sentimentNeutral">0</span></div>
+                                    <div class="sentiment-bar negative">Negative: <span id="sentimentNegative">0</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Average Ratings -->
+                            <div class="analysis-card">
+                                <h4>Average Ratings (1-5)</h4>
+                                <div class="avg-ratings-grid">
+                                    <div>Teaching: <br><span id="avgTeachingRating" class="avg-rating-value">N/A</span></div>
+                                    <div>Knowledge: <br><span id="avgKnowledgeRating" class="avg-rating-value">N/A</span></div>
+                                    <div>Behavior: <br><span id="avgBehaviorRating" class="avg-rating-value">N/A</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Comment Sentiment Breakdown (RE-ADDED) -->
+                            <div class="analysis-card">
+                                <h4>Comment Sentiment Breakdown</h4>
+                                <div class="sentiment-bars">
+                                    <div class="sentiment-bar positive-comment">Positive Comments: <span id="commentSentimentPositive">0</span></div>
+                                    <div class="sentiment-bar neutral-comment">Neutral Comments: <span id="commentSentimentNeutral">0</span></div>
+                                    <div class="sentiment-bar negative-comment">Negative Comments: <span id="commentSentimentNegative">0</span></div>
+                                </div>
+                                <p class="small-info">(Note: Comment sentiment is based on a simplified keyword analysis.)</p>
+                            </div>
+
+
+                            <!-- Students Who Haven't Submitted Feedback -->
+                            <div class="analysis-card">
+                                <h4>Students Who Haven't Submitted Feedback:</h4>
+                                <ul id="unsubmittedStudentsList" class="unsubmitted-students-list">
+                                    <li>All students have submitted feedback for this subject, or no students registered yet.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Individual Feedback Details -->
+                            <div class="analysis-card">
+                                <h4>Individual Feedback Details</h4>
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Student Email</th>
+                                                <th>Student ID</th>
+                                                <th>Section</th>
+                                                <th>Teaching</th>
+                                                <th>Knowledge</th>
+                                                <th>Behavior</th>
+                                                <th>Comment</th>
+                                                <th>Submitted At</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="feedbackTableBody">
+                                            <tr><td colspan="8">No feedback available for this subject yet.</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/principal.js"></script>
+</body>
+</html>

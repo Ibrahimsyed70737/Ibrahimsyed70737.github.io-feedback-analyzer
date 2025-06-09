@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Section Selection</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Principal Dashboard</h1>
+            <h2>Select Section to Manage</h2>
+
+            <div class="form-group">
+                <label for="principalSectionSelect">Choose a Section:</label>
+                <select id="principalSectionSelect">
+                    <option value="">Loading sections...</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" id="proceedToDashboardBtn">Proceed to Dashboard</button>
+            <button class="btn btn-danger" id="logoutButtonSectionSelect">Logout</button>
+            <div id="sectionSelectionMessage" class="message"></div>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+            <!-- Add NEW SECTION here -->
+            <div id="addSectionBlock">
+                <h2>Add New Section</h2>
+                <p class="small-info">Add a new section if it doesn't appear in the dropdown above.</p>
+                <form id="addSectionFormOnSelectPage">
+                    <div class="form-group">
+                        <label for="sectionNameOnSelectPage">Section Name:</label>
+                        <input type="text" id="sectionNameOnSelectPage" placeholder="Enter section name (e.g., 10TH GRADE)" required>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Add Section</button>
+                </form>
+                <div id="addSectionMessageOnSelectPage" class="message"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- THIS SCRIPT TAG IS ABSOLUTELY CRUCIAL -->
+    <script type="module" src="./js/principalSectionLogic.js"></script>
+</body>
+</html>
