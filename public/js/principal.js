@@ -303,7 +303,8 @@ function initViewFeedbackSection(section) {
                 feedbackTableBody.innerHTML = ''; // Clear previous feedback
 
                 if (data.feedbackDetails.length === 0) {
-                    feedbackTableBody.innerHTML = '<tr><td colspan="8">No individual feedback available for this subject yet.</td></tr>';
+                    // Adjusted colspan to 5 (Section, Teaching, Knowledge, Behavior, Comment, Submitted At)
+                    feedbackTableBody.innerHTML = '<tr><td colspan="5">No individual feedback available for this subject yet.</td></tr>';
                 } else {
                     data.feedbackDetails.forEach(feedback => {
                         const commentSentiment = analyzeCommentSentiment(feedback.comment); // Analyze comment
@@ -313,8 +314,6 @@ function initViewFeedbackSection(section) {
 
                         const row = feedbackTableBody.insertRow();
                         row.innerHTML = `
-                            <td>${feedback.student ? feedback.student.email : 'N/A'}</td>
-                            <td>${feedback.student ? feedback.student.studentId : 'N/A'}</td>
                             <td>${feedback.section}</td>
                             <td>${feedback.teachingRating ? `${feedback.teachingRating} / 5` : 'N/A'}</td>
                             <td>${feedback.knowledgeRating ? `${feedback.knowledgeRating} / 5` : 'N/A'}</td>
