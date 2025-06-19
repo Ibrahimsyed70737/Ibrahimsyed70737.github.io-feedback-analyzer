@@ -1,31 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Feedback Analyzer</title>
-    <link rel="stylesheet" href="./public/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url=./public/index.html">
+    <script>
+        window.location.replace("./public/index.html");
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="card login-card">
-            <h1>Login</h1>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-            <div id="message" class="message"></div>
-        </div>
-    </div>
-
-    <script type="module" src="./public/js/auth.js"></script>
+    <p>If you are not redirected automatically, follow this <a href="./public/index.html">link to Feedback Analyzer</a>.</p>
 </body>
 </html>
